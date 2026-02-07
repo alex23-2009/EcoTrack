@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoTrack</title>
-
+  <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="barra de navegacion.css">
   <link rel="stylesheet" href="pie.css">
-  <link rel="stylesheet" href="beneficios.css">
+  <link rel="stylesheet" href="navegacion.css">
 </head>
 <body>
   <body>
@@ -32,54 +32,43 @@
                     </ul>
                 </li>
                 <li><a href="planes.html">Planes</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="contacto.html">Contactos</a></li>
              
             </ul>
         </nav>
     </header>
 
-  <section class="seccion-beneficios-principal">
-    <h2 class="titulo-beneficios">Descubre los Beneficios de EcoTrack</h2>
-    <p class="subtitulo-beneficios">Elige cómo EcoTrack mejora tu vida y el planeta.</p>
-    <div class="contenedor-beneficios">
-        <div class="beneficio-card">
-            <i class="fas fa-piggy-bank icono-beneficio"></i>
-            <h3>Ahorro Inteligente</h3>
-            <p>Reduce significativamente tus gastos en agua, luz y gas con nuestro análisis y control avanzado.</p>
-            <a href="ahorro.html" class="boton-beneficio">Ver más sobre Ahorro</a>
-        </div>
-        <div class="beneficio-card">
-            <i class="fas fa-home icono-beneficio"></i>
-            <h3>Máxima Comodidad</h3>
-            <p>Gestiona todos los aspectos de tu hogar inteligente desde una única aplicación intuitiva y fácil de usar.</p>
-            <a href="comodidad.html" class="boton-beneficio">Ver más sobre Comodidad</a>
-        </div>
-        <div class="beneficio-card">
-            <i class="fas fa-leaf icono-beneficio"></i>
-            <h3>Sostenibilidad Activa</h3>
-            <p>Contribuye al cuidado del medio ambiente optimizando tu consumo de recursos de manera eficiente.</p>
-            <a href="sostenibilidad.html" class="boton-beneficio">Ver más sobre Sostenibilidad</a>
-        </div>
+
+  <section class="banner" id="inicio">
+    <div class="contenido">
+      <h1>Controla tu hogar,<br>ahorra con inteligencia.</h1>
+      <a href="como funciona.html" class="boton">Descubre cómo funciona</a>
     </div>
+  </section>
+</body>
+
+<section class="noticias-ecotrack">
+  <h2>Mantente al día con EcoTrack y las últimas tendencias</h2>
+  <div class="noticias-container">
+    <div class="noticia">
+      <h3><a href="https://revistaclevel.com/top-3-aplicaciones-innovadoras-para-empezar-el-ano-2025" target="_blank">Top 3 apps innovadoras para un hogar más inteligente en 2025</a></h3>
+      <p>Descubre las aplicaciones que están marcando la pauta en la gestión inteligente del hogar, ¡algunas predicen hasta tus tareas!</p>
+    </div>
+    <div class="noticia">
+      <h3><a href="https://garza.es/blogs/noticias/las-5-tendencias-en-tecnologia-para-el-hogar-inteligente-en-2025" target="_blank">5 tendencias tecnológicas que revolucionarán tu hogar en 2025</a></h3>
+      <p>Desde la seguridad avanzada hasta la optimización energética total, mira lo que se viene en hogares inteligentes.</p>
+    </div>
+    <div class="noticia">
+      <h3><a href="https://www.infobae.com/inhouse/2025/01/29/inteligencia-artificial-y-sostenibilidad-en-el-hogar-las-tendencias-que-prometen-llegar-con-fuerza-en-2025/" target="_blank">IA y sostenibilidad: la dupla imparable en los hogares del futuro</a></h3>
+      <p>Entérate cómo la inteligencia artificial se une a la sostenibilidad para crear hogares más eficientes y conscientes.</p>
+    </div>
+    <div class="noticia">
+      <h3><a href="https://cne.gob.do/noticia/2023-un-ano-de-grandes-avances-en-eficiencia-energetica-y-sostenibilidad/" target="_blank">Grandes avances en eficiencia energética y sostenibilidad en 2023</a></h3>
+      <p>Un vistazo a los progresos que impulsan soluciones como EcoTrack hacia un futuro más verde y económico.</p>
+    </div>
+  </div>
 </section>
-<script>function checkVisibility() {
-  // ... tu código JavaScript existente para otras secciones ...
 
-  const beneficiosSection = document.querySelector('.seccion-beneficios-principal');
-  if (beneficiosSection) {
-    const rect = beneficiosSection.getBoundingClientRect();
-    const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight * 0.8) || (rect.bottom >= 0 && rect.top <= window.innerHeight * 0.8);
-    if (isVisible) {
-      beneficiosSection.classList.add('aparecer');
-    } else {
-      beneficiosSection.classList.remove('aparecer');
-    }
-  }
-}
-
-window.addEventListener('scroll', checkVisibility);
-window.addEventListener('resize', checkVisibility);
-window.addEventListener('load', checkVisibility);</script>
 
 
 <footer class="footer">
@@ -114,3 +103,29 @@ window.addEventListener('load', checkVisibility);</script>
       </div>
   </div>
 </footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const contenido = document.querySelector('.contenido');
+  
+    // Verificar si hay IntersectionObserver
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            contenido.style.animation = 'aparecerContenido 2s ease forwards';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+  
+      observer.observe(contenido);
+    } else {
+      // Si no soporta IntersectionObserver, simplemente mostrar
+      contenido.style.opacity = 1;
+      contenido.style.transform = 'translateY(0)';
+    }
+  });
+  </script>
+  
+</html>
+
